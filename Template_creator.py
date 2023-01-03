@@ -2,9 +2,11 @@ import matplotlib.pyplot as plt
 import mplhep as hep
 import pandas as pd
 import numpy as np
+import shutil
 import uproot
 import ROOT
 import time
+import os
 
 plt.style.use(hep.style.ROOT)
 
@@ -736,10 +738,54 @@ class Template_creator(object):
         
         
 def instantiate_template_helper(reso1, reso1_name, reso2, reso2_name, reso_area, bkgs, bkg_areas, bkg_names, fname, 
-                                d_reso1=None, d_reso2=None, d_bkgs=[None]):
+                                d_reso1=None, d_reso2=None, d_bkgs=[None], d_name=None,
+                                lowerlim=6, upperlim=9, signal_sample_region=None,
+                                nbins_1d=40, nbins_2d=20, verbose=False):
+    """This function takes in a variety of different parameters in order to make template creation easy
+
+    Arguments:
+        reso1 -- The first signal mass resonance. This should be an iterable of masses
+        reso1_name -- The name of the first signal sample
+        reso2 -- The second signal mass resonance. This should be an iterable of masses
+        reso2_name -- The name of the second signal sample
+        reso_area -- The area for the signal histogram that you desire
+        bkgs -- The background samples for the template. This should a list of mass iterables
+        bkg_areas -- The areas for each of the background samples. This should be a list of areas with the same ordering as the bkgs list
+        bkg_names -- The names for each of the background samples. This should be a list of names with the same ordering as the bkgs list
+        fname -- The filenames you want to use
+
+    Keyword Arguments:
+        d_reso1 -- A discriminant for the first signal resonance (default: {None})
+        d_reso2 -- A discriminant for the second signal resonance (default: {None})
+        d_bkgs -- A list of discriminants for the background samples. This should be a list of discriminants with the same ordering as the bkgs list (default: {[None]})
+        d_name -- The name of the discriminant you are using (default: {None})
+        lowerlim -- The lower limit for M4L in GeV (default: {6})
+        upperlim -- The upper limit for M4L in GeV (default: {9})
+        signal_sample_region -- Whether you would like to oversample a region within the range. Provide a range if you do (default: {None})
+        nbins_1d -- The number of bins for the 1-dimensional template (default: {40})
+        nbins_2d -- The number of bins for the 2-dimensional template (default: {20})
+        verbose -- Whether you would like for the creation to be verbose (default: {False})
+
+    Raises:
+        ValueError: This is raised if the background lists do not have the same size
+
+    Returns:
+        The template class that was created using these parameters after creating the histograms
+    """
     
-    if (len(bkgs) != len(bkg_areas)) and (len(bkg_areas) == len(bkg_names)):
-        raise ValueError("backgrounds list should have the same length as the list of areas and the list of names")
+    check_len_list = [bkgs, bkg_areas, bkg_names]
+    
+    if d_bkgs:
+        check_len_list += [d_bkgs]
+    
+    for i in check_len_list:
+        for j in check_len_list:
+            if len(i) != len(j):
+                raise ValueError("backgrounds lists should have the same length!")
+    
+    is_2d = False
+    if d_reso1 and d_reso2 and d_bkgs and d_name:
+        is_2d = True
     
     bkgs_and_their_area = []
     for bkg_sample, bkg_sample_area in zip(bkgs, bkg_areas):
@@ -754,4 +800,56 @@ def instantiate_template_helper(reso1, reso1_name, reso2, reso2_name, reso_area,
         d_reso2,
         d_bkgs,
         bkgs_and_their_area,
+        bkg_names,
+        d_name,
+        lowerlim=lowerlim,
+        upperlim=upperlim,
+        signal_sample_region=signal_sample_region
     )
+    
+    template_generator.rooFit_Input_1d(nbins_1d)
+    
+    if is_2d:
+        template_generator.rooFit_Input_2d(nbins_2d)
+        
+    template_generator.plot_histograms(fname=fname, show=False)
+    
+    one_d_filename = fname+'.root'
+    two_d_filename = fname+'_2d_out.root'
+    
+    one_d_in_folder = '1d_'+fname
+    two_d_in_folder = '2d_'+fname
+    
+    if not os.path.isdir(one_d_in_folder): #if the folder doesn't exist - make it!
+        os.mkdir(one_d_in_folder)
+    
+    if not os.path.isdir(two_d_in_folder):
+        os.mkdir(two_d_in_folder)
+    
+    shutil.move(one_d_filename, one_d_in_folder+'/'+one_d_filename)
+    shutil.move(two_d_filename, two_d_in_folder+'/'+two_d_filename)
+    
+    one_d_out_folder = one_d_in_folder+'_out'
+    two_d_out_folder = two_d_in_folder+'_out'
+    
+    if not os.path.isdir(one_d_out_folder):
+        os.mkdir(one_d_out_folder)
+    
+    if not os.path.isdir(two_d_out_folder):
+        os.mkdir(two_d_out_folder)
+        
+    for in_folder, out_folder in zip([one_d_in_folder, two_d_in_folder],[one_d_out_folder, two_d_out_folder]):
+        runstr = 'python MakeInputRoot_OnShell.py '
+        runstr += in_folder + ' ' + out_folder
+        if not verbose:
+            runstr += ' > /dev/null'
+        os.system(runstr)
+        
+        runstr = 'python DatacardMaker_OnShell.py '
+        runstr += out_folder
+        if not verbose:
+            runstr += ' > /dev/null'
+        
+        os.system(runstr)
+        
+    return template_generator
