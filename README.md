@@ -1,6 +1,6 @@
 # Template Creation for Higgs Combine
 
-This repository holds a class that is designed to create templates for Higgs Combine. It will generate the histograms for Combine, as well as the datacards required for both a 1-dimensional fit using $\text{m}_{4\mu}$, and a 2-dimensional fit using both $\text{m}_{4\mu}$ and an optimal observable discriminant (ex: $D_{0-}$).
+This repository holds a class that is designed to create templates for Higgs Combine. It will generate the histograms for Combine, as well as the datacards required for both a 1-dimensional fit using $m_{4\mu}$, and a 2-dimensional fit using both $m_{4\mu}$ and an optimal observable discriminant (ex: $D_{0-}$).
 
 ## Dependencies
 - You will need following packages. Some packages have dependencies (which are not listed). I would recommend using conda to do any package installations, as it will automatically download any dependencies you may need. For packages that require a conda installation, the conda webpage for each package required is linked below:
