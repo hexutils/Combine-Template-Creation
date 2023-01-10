@@ -21,4 +21,4 @@ This repository holds a class that is designed to create templates for Higgs Com
 
 ## How to use this package
 
-Use the `instantiate_template_helper` function to create the required templates for you
+Use the `instantiate_template_helper` function to create the required templates for you. Import `Template_creator.py`, input the required parameters, and if you are doing work in an area that can access the other python files in this area it should work automatically.
