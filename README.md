@@ -31,4 +31,14 @@ title: Class Structure
 classDiagram
   Template_creator <|-- Template_Creator_1D
   Template_creator <|-- Template_Creator_2D
+  Interf_Coupling_template_creator <|-- Template_Creator_2D
+  Interf_Reso_template_creator_1D <|-- Template_Creator_1D
+  Significance_Hypothesis_template_creator_1D <|-- Template_Creator_1D
+  class Template_creator{
+    +int dimension
+    +float lowerlim
+    +float upperlim
+    +tuple(float, float) discr_range
+    +dict signal
+  }
 ```
