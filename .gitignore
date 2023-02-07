@@ -1,0 +1,4 @@
+*.root
+*.txt
+*.csv
+__pycache__/*
