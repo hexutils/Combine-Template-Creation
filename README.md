@@ -38,7 +38,7 @@ classDiagram
     +int dimension
     +float lowerlim
     +float upperlim
-    +<float, float> discr_range
+    +tuple<float, float> discr_range
     +dict signal
   }
 ```
