@@ -38,7 +38,31 @@ classDiagram
     +int dimension
     +float lowerlim
     +float upperlim
-    +tuple<float, float> discr_range
-    +dict signal
+    +tuple discr_range
+    +dict signals
+    +dict scaled_signals
+    +dict signal_weights
+    +dict discr_signals
+    +dict bkgs
+    +dict scaled_bkgs
+    +dict bkg_weights
+    +dict discr_bkgs
+    +create_datacards(verbose=False, clean=True)
+    +scale_and_add_bkgs()
+    +stackPlot(nbins=40)
   }
+  class Template_Creator_1D{
+    +scale_and_add_bkgs(bins=40, scaleTo=True)
+  }
+  class Template_Creator_2D{
+    +scale_and_add_bkgs(bins=40, scaleTo=True)
+  }
+  class Interf_Coupling_template_creator{
+  }
+  class Interf_Reso_template_creator_1D{
+    +plot_overall_interference()
+  }
+  class Significance_Hypothesis_template_creator_1D{
+  }
+
 ```
