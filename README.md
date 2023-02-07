@@ -21,4 +21,48 @@ This repository holds a class that is designed to create templates for Higgs Com
 
 ## How to use this package
 
-Use the `instantiate_template_helper` function to create the required templates for you
+The `Template_creator.py` function holds the majority of the content in this package. It contains classes for select 1d and 2d Templates, all inheriting from the same parent 1d and 2d template classes. Further development comes as is necessary.
+
+
+```mermaid
+---
+title: Class Structure
+---
+classDiagram
+  Template_creator <|-- Template_Creator_1D
+  Template_creator <|-- Template_Creator_2D
+  Template_Creator_2D <|-- Interf_Coupling_template_creator
+  Template_Creator_1D <|-- Interf_Reso_template_creator_1D
+  Template_Creator_1D <|-- Significance_Hypothesis_template_creator_1D
+  class Template_creator{
+    +int dimension
+    +float lowerlim
+    +float upperlim
+    +tuple discr_range
+    +dict signals
+    +dict scaled_signals
+    +dict signal_weights
+    +dict discr_signals
+    +dict bkgs
+    +dict scaled_bkgs
+    +dict bkg_weights
+    +dict discr_bkgs
+    +create_datacards(verbose=False, clean=True)
+    +scale_and_add_bkgs()
+    +stackPlot(nbins=40)
+  }
+  class Template_Creator_1D{
+    +scale_and_add_bkgs(bins=40, scaleTo=True)
+  }
+  class Template_Creator_2D{
+    +scale_and_add_bkgs(bins=40, scaleTo=True)
+  }
+  class Interf_Coupling_template_creator{
+  }
+  class Interf_Reso_template_creator_1D{
+    +plot_overall_interference()
+  }
+  class Significance_Hypothesis_template_creator_1D{
+  }
+
+```
