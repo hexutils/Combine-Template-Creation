@@ -8,13 +8,20 @@ def plot_overall_interference(terms, names,
                               output_directory, output_filename):
     """This function plots the overall plot of both interference and pure terms to plot everything
 
-    Arguments:
-        terms -- A list of all the pure sample and interference terms. This should be a list of (count, bin) pairs (i.e. numpy histograms)
-        names -- A list of the names for all of these terms
-        output_directory -- The directory you would like to output to
-        output_filename -- The filename you want to name the plots
+    Parameters
+    ----------
+    terms : iterable
+        A list of all the pure sample and interference terms. This should be a list of (count, bin) pairs (i.e. numpy histograms)
+    names : iterable
+        A list of the names for all of these terms
+    output_directory : string
+        The directory you would like to output to
+    output_filename : string
+        The filename you want to name the plots
 
-    Returns:
+    Returns
+    -------
+    Tuple[numpy.array, numpy.array]
         the numpy histogram object of the overall sample
     """
     

@@ -35,6 +35,7 @@ classDiagram
   Template_Creator_1D <|-- Interf_Reso_template_creator_1D
   Template_Creator_1D <|-- Significance_Hypothesis_template_creator_1D
   class Template_creator{
+    link "https://github.com/hexutils/Combine-Template-Creation/blob/7f694b8c20f2e60e4f55b4ed0c12add7286fbf05/Template_creator.py#L18"
     +int dimension
     +float lowerlim
     +float upperlim
@@ -52,9 +53,11 @@ classDiagram
     +stackPlot(nbins=40)
   }
   class Template_Creator_1D{
+    link "https://github.com/hexutils/Combine-Template-Creation/blob/7f694b8c20f2e60e4f55b4ed0c12add7286fbf05/Template_creator.py#L137"
     +scale_and_add_bkgs(bins=40, scaleTo=True)
   }
   class Template_Creator_2D{
+    link "https://github.com/hexutils/Combine-Template-Creation/blob/7f694b8c20f2e60e4f55b4ed0c12add7286fbf05/Template_creator.py#L137"
     +scale_and_add_bkgs(bins=40, scaleTo=True)
   }
   class Interf_Coupling_template_creator{
@@ -64,5 +67,4 @@ classDiagram
   }
   class Significance_Hypothesis_template_creator_1D{
   }
-
 ```
