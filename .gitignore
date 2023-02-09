@@ -2,4 +2,3 @@
 *.txt
 *.csv
 __pycache__/*
-Makefile
