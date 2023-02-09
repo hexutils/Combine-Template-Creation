@@ -6,20 +6,6 @@ import numpy as np
 import mplhep as hep
 import Template_creator
 import matplotlib.pyplot as plt
-plt.style.use(hep.style.ROOT)
-
-
-parser = argparse.ArgumentParser()
-# parser.add_argument('filename')
-parser.add_argument('-n', '--nbins', default=40)
-parser.add_argument('-o', '--outFolder', default='./')
-parser.add_argument('-c', '--crossSection', required=True)
-parser.add_argument('-b', '--backgrounds', nargs='+', required=True)
-parser.add_argument('-a', '--areas', nargs=3, type=float)
-args = parser.parse_args()
-
-
-coupling_hunter = re.compile(r'\w+_ghzpzp(\d)_?\S+')
 
 def place_that_list(filename):
     global insertionList
@@ -46,8 +32,21 @@ def place_that_list(filename):
             insertionList[5] = filename
     else:
         print("whoops!")
+        
+if __name__ == "__main__":
+    plt.style.use(hep.style.ROOT)
 
-if __name__ == "__main__":    
+    parser = argparse.ArgumentParser()
+    # parser.add_argument('filename')
+    parser.add_argument('-n', '--nbins', default=40)
+    parser.add_argument('-o', '--outFolder', default='./')
+    parser.add_argument('-c', '--crossSection', required=True)
+    parser.add_argument('-b', '--backgrounds', nargs='+', required=True)
+    parser.add_argument('-a', '--areas', nargs=3, type=float)
+    args = parser.parse_args()
+
+    coupling_hunter = re.compile(r'\w+_ghzpzp(\d)_?\S+')
+
     data_samples = {}
     cross_section_samples = {}
     bkg_samples = {}
