@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Template_helper_methods &mdash; Combine-Template-Creation  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Combine-Template-Creation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+    <a href="genindex.html">Index</a>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Combine-Template-Creation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">Template_helper_methods</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for Template_helper_methods</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">ROOT</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">uproot</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="scale"><a class="viewcode-back" href="../Template_helper_methods.html#Template_helper_methods.scale">[docs]</a><span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">scaleto</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This function scales histograms according to their absolute area under the curve (no negatives allowed!)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    counts : array_like</span>
+<span class="sd">        A list of bin counts</span>
+<span class="sd">    scaleto : float</span>
+<span class="sd">        The absolute area to scale to</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.array</span>
+<span class="sd">        The scaled histogram counts</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">signs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span> <span class="c1">#makes sure to preserve sign</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">signs</span><span class="o">*</span><span class="n">counts</span><span class="o">*</span><span class="n">scaleto</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="extract_branches_from_TTree"><a class="viewcode-back" href="../Template_helper_methods.html#Template_helper_methods.extract_branches_from_TTree">[docs]</a><span class="k">def</span> <span class="nf">extract_branches_from_TTree</span><span class="p">(</span><span class="n">ROOT_file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">uproot</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">ROOT_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">branches_as_numpy_arrays</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+            <span class="n">branches_as_numpy_arrays</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">branch</span><span class="p">]</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">library</span><span class="o">=</span><span class="s1">&#39;np&#39;</span><span class="p">))</span>
+            
+        <span class="k">return</span> <span class="n">branches_as_numpy_arrays</span></div>
+
+<div class="viewcode-block" id="name_correctly"><a class="viewcode-back" href="../Template_helper_methods.html#Template_helper_methods.name_correctly">[docs]</a><span class="k">def</span> <span class="nf">name_correctly</span><span class="p">(</span><span class="n">interf_probability</span><span class="p">):</span>
+    <span class="n">parsing_list</span> <span class="o">=</span> <span class="n">interf_probability</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
+    <span class="n">named_str</span> <span class="o">=</span> <span class="s2">&quot;ggH_&quot;</span>
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">string</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">parsing_list</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;ghzpzp&quot;</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+            <span class="n">named_str</span> <span class="o">+=</span> <span class="s2">&quot;g&quot;</span> <span class="o">+</span> <span class="n">string</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">named_str</span> <span class="o">+=</span> <span class="n">parsing_list</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">named_str</span></div>
+
+<div class="viewcode-block" id="Unroll_2D_OnShell"><a class="viewcode-back" href="../Template_helper_methods.html#Template_helper_methods.Unroll_2D_OnShell">[docs]</a><span class="k">def</span> <span class="nf">Unroll_2D_OnShell</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">fname</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Code written by Jeffrey Davis of happy hour cocktail fame to unroll a 2 dimensional histogram</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    directory : string</span>
+<span class="sd">        The directory that you are inputting and outputting from</span>
+<span class="sd">    fname : string</span>
+<span class="sd">        The filename of what you are unrolling</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">directory</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+        <span class="n">directory</span> <span class="o">+=</span> <span class="s1">&#39;/&#39;</span>
+    <span class="n">fname</span> <span class="o">=</span> <span class="n">fname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        
+    <span class="n">histfile</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">directory</span><span class="o">+</span><span class="n">fname</span><span class="o">+</span><span class="s1">&#39;.root&#39;</span><span class="p">,</span> <span class="s2">&quot;READ&quot;</span><span class="p">)</span>
+    <span class="n">fout</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="p">(</span><span class="n">directory</span><span class="o">+</span><span class="n">fname</span><span class="o">+</span><span class="s1">&#39;_unrolled.root&#39;</span><span class="p">,</span><span class="s2">&quot;RECREATE&quot;</span><span class="p">)</span>
+    <span class="n">fout</span><span class="o">.</span><span class="n">cd</span><span class="p">()</span>
+    
+    <span class="k">for</span> <span class="n">keyname</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;ggH_0PM&#39;</span><span class="p">,</span> <span class="s1">&#39;ggH_0M&#39;</span><span class="p">,</span> <span class="s1">&#39;bkg_ggzz&#39;</span><span class="p">]:</span>
+        <span class="n">hist</span> <span class="o">=</span> <span class="n">histfile</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">keyname</span><span class="p">)</span>
+        
+        <span class="n">xbins</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetNbinsX</span><span class="p">()</span>
+        <span class="n">ybins</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetNbinsY</span><span class="p">()</span>
+
+        <span class="n">temp_pos</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TH1F</span><span class="p">(</span><span class="s2">&quot;temp_pos&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">xbins</span><span class="o">*</span><span class="n">ybins</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">xbins</span><span class="o">*</span><span class="n">ybins</span><span class="p">)</span>
+        <span class="n">temp_neg</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TH1F</span><span class="p">(</span><span class="s2">&quot;temp_neg&quot;</span><span class="p">,</span><span class="s2">&quot;dif&quot;</span><span class="p">,</span><span class="n">xbins</span><span class="o">*</span><span class="n">ybins</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">xbins</span><span class="o">*</span><span class="n">ybins</span><span class="p">)</span>
+        <span class="c1">#Unroll Hists</span>
+        <span class="n">indk</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">has_negative</span> <span class="o">=</span> <span class="kc">False</span> 
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ybins</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">xbins</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">binx_c</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetXaxis</span><span class="p">()</span><span class="o">.</span><span class="n">GetBinCenter</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+                <span class="n">biny_c</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetYaxis</span><span class="p">()</span><span class="o">.</span><span class="n">GetBinCenter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+                <span class="n">ibin</span> <span class="o">=</span>  <span class="n">hist</span><span class="o">.</span><span class="n">FindBin</span><span class="p">(</span><span class="n">binx_c</span><span class="p">,</span><span class="n">biny_c</span><span class="p">)</span>
+                <span class="n">cont</span>  <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetBinContent</span><span class="p">(</span><span class="n">ibin</span><span class="p">)</span>
+                <span class="c1">#put small values in empty background bins</span>
+                <span class="k">if</span> <span class="n">cont</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span> 
+                    <span class="k">if</span> <span class="s2">&quot;bkg&quot;</span> <span class="ow">in</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetName</span><span class="p">():</span>
+                        <span class="n">intt</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">Integral</span><span class="p">()</span>
+                        <span class="n">nb</span> <span class="o">=</span> <span class="n">ybins</span><span class="o">*</span><span class="n">xbins</span>
+                        <span class="n">contt</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">intt</span><span class="o">*</span><span class="mf">1.0</span><span class="o">/</span><span class="n">nb</span>
+                        <span class="c1"># print (&quot;found empty bin&quot;,contt)</span>
+                        <span class="n">hist</span><span class="o">.</span><span class="n">SetBinContent</span><span class="p">(</span><span class="n">ibin</span><span class="p">,</span><span class="n">contt</span><span class="p">)</span>
+                        <span class="c1"># print (cont)</span>
+                <span class="k">if</span> <span class="n">cont</span>  <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">:</span>
+                    <span class="n">has_negative</span> <span class="o">=</span> <span class="kc">True</span>
+                    
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ybins</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">xbins</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">binx_c</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetXaxis</span><span class="p">()</span><span class="o">.</span><span class="n">GetBinCenter</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+                <span class="n">biny_c</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetYaxis</span><span class="p">()</span><span class="o">.</span><span class="n">GetBinCenter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+                <span class="n">ibin</span> <span class="o">=</span>  <span class="n">hist</span><span class="o">.</span><span class="n">FindBin</span><span class="p">(</span><span class="n">binx_c</span><span class="p">,</span><span class="n">biny_c</span><span class="p">)</span>
+                <span class="n">cont</span>  <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetBinContent</span><span class="p">(</span><span class="n">ibin</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">cont</span>  <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">:</span>
+                    <span class="n">temp_neg</span><span class="o">.</span><span class="n">Fill</span><span class="p">(</span><span class="n">indk</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">cont</span><span class="p">)</span>
+                <span class="k">else</span> <span class="p">:</span>
+                    <span class="n">temp_pos</span><span class="o">.</span><span class="n">Fill</span><span class="p">(</span><span class="n">indk</span><span class="p">,</span><span class="n">cont</span><span class="p">)</span>
+                    <span class="n">temp_pos</span><span class="o">.</span><span class="n">SetBinError</span><span class="p">(</span><span class="n">indk</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">cont</span><span class="p">))</span>
+                <span class="n">indk</span> <span class="o">=</span> <span class="n">indk</span> <span class="o">+</span><span class="mi">1</span>
+
+        <span class="n">temp_name</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
+        
+        <span class="n">tpname</span> <span class="o">=</span> <span class="n">temp_name</span>
+        <span class="n">tnname</span> <span class="o">=</span> <span class="n">temp_name</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">has_negative</span> <span class="ow">and</span> <span class="p">(</span> <span class="s2">&quot;bkg&quot;</span> <span class="ow">in</span> <span class="n">tnname</span> <span class="ow">or</span> <span class="s2">&quot;Data&quot;</span> <span class="ow">in</span> <span class="n">tnname</span>  <span class="ow">or</span> <span class="s2">&quot;0PH&quot;</span> <span class="ow">in</span> <span class="n">tnname</span> <span class="ow">or</span> <span class="s2">&quot;0PM&quot;</span> <span class="ow">in</span> <span class="n">tnname</span> <span class="ow">or</span> <span class="s2">&quot;L1&quot;</span> <span class="ow">in</span> <span class="n">tnname</span> <span class="ow">or</span> <span class="s2">&quot;0M&quot;</span> <span class="ow">in</span> <span class="n">tnname</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ybins</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">xbins</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                    <span class="n">binx_c</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetXaxis</span><span class="p">()</span><span class="o">.</span><span class="n">GetBinCenter</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+                    <span class="n">biny_c</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetYaxis</span><span class="p">()</span><span class="o">.</span><span class="n">GetBinCenter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+                    <span class="n">ibin</span> <span class="o">=</span>  <span class="n">hist</span><span class="o">.</span><span class="n">FindBin</span><span class="p">(</span><span class="n">binx_c</span><span class="p">,</span><span class="n">biny_c</span><span class="p">)</span>
+                    <span class="n">cont</span>  <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetBinContent</span><span class="p">(</span><span class="n">ibin</span><span class="p">)</span>
+
+                <span class="c1">#put small values in negtative background bins</span>
+                <span class="c1">#Also put 0 in negative signal bins</span>
+                <span class="k">if</span> <span class="n">cont</span>  <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">:</span>
+                    <span class="n">hist</span><span class="o">.</span><span class="n">SetBinContent</span><span class="p">(</span><span class="n">ibin</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;found negative bin&quot;</span><span class="p">,</span><span class="n">cont</span><span class="p">)</span>
+                    <span class="n">cont</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">if</span> <span class="n">cont</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+                    <span class="k">if</span> <span class="s2">&quot;bkg&quot;</span> <span class="ow">in</span> <span class="n">hist</span><span class="o">.</span><span class="n">GetName</span><span class="p">():</span>
+                        <span class="n">intt</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">Integral</span><span class="p">()</span>
+                        <span class="n">nb</span> <span class="o">=</span> <span class="n">ybins</span><span class="o">*</span><span class="n">xbins</span>
+                        <span class="n">contt</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">intt</span><span class="o">*</span><span class="mf">1.0</span><span class="o">/</span><span class="n">nb</span>
+                        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;found empty bin&quot;</span><span class="p">,</span><span class="n">contt</span><span class="p">)</span>
+                        <span class="n">hist</span><span class="o">.</span><span class="n">SetBinContent</span><span class="p">(</span><span class="n">ibin</span><span class="p">,</span><span class="n">contt</span><span class="p">)</span>
+                        <span class="nb">print</span> <span class="p">(</span><span class="n">cont</span><span class="p">)</span>
+            
+            <span class="n">temp_neg</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">tnname</span><span class="p">)</span>
+            <span class="n">temp_pos</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">tpname</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="p">(</span><span class="n">has_negative</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span> <span class="s2">&quot;bkg&quot;</span> <span class="ow">in</span> <span class="n">tnname</span> <span class="ow">or</span> <span class="s2">&quot;Data&quot;</span> <span class="ow">in</span> <span class="n">tnname</span>  <span class="ow">or</span> <span class="s2">&quot;0PH&quot;</span> <span class="ow">in</span> <span class="n">tnname</span> <span class="ow">or</span> <span class="s2">&quot;0PM&quot;</span> <span class="ow">in</span> <span class="n">tnname</span> <span class="ow">or</span> <span class="s2">&quot;L1&quot;</span> <span class="ow">in</span> <span class="n">tnname</span> <span class="ow">or</span> <span class="s2">&quot;0M&quot;</span> <span class="ow">in</span> <span class="n">tnname</span><span class="p">)</span> <span class="p">):</span>
+
+            <span class="k">if</span> <span class="s2">&quot;up&quot;</span> <span class="ow">in</span> <span class="n">tpname</span> <span class="ow">or</span> <span class="s2">&quot;dn&quot;</span> <span class="ow">in</span> <span class="n">tpname</span> <span class="p">:</span>
+                <span class="n">tpnm</span> <span class="o">=</span> <span class="n">tpname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
+                <span class="n">tpnm</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;positive&quot;</span><span class="p">)</span>
+                <span class="n">tpname</span><span class="o">=</span> <span class="n">tpnm</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">ist</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">tpnm</span><span class="p">)):</span>
+                    <span class="n">tpname</span> <span class="o">=</span> <span class="n">tpname</span><span class="o">+</span><span class="s2">&quot;_&quot;</span><span class="o">+</span><span class="n">tpnm</span><span class="p">[</span><span class="n">ist</span><span class="p">]</span> 
+            <span class="k">else</span> <span class="p">:</span>     
+                <span class="n">tpname</span> <span class="o">=</span> <span class="n">tpname</span><span class="o">+</span><span class="s2">&quot;_positive&quot;</span>
+
+
+            <span class="k">if</span> <span class="s2">&quot;up&quot;</span> <span class="ow">in</span> <span class="n">tnname</span> <span class="ow">or</span> <span class="s2">&quot;dn&quot;</span> <span class="ow">in</span> <span class="n">tnname</span> <span class="p">:</span>
+                <span class="n">tnnm</span> <span class="o">=</span> <span class="n">tnname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
+                <span class="n">tnnm</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;negative&quot;</span><span class="p">)</span>
+                <span class="n">tnname</span><span class="o">=</span> <span class="n">tnnm</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">ist</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">tnnm</span><span class="p">)):</span>
+                    <span class="n">tnname</span> <span class="o">=</span> <span class="n">tnname</span><span class="o">+</span><span class="s2">&quot;_&quot;</span><span class="o">+</span><span class="n">tnnm</span><span class="p">[</span><span class="n">ist</span><span class="p">]</span>  
+            <span class="k">else</span> <span class="p">:</span>     
+                <span class="n">tnname</span> <span class="o">=</span> <span class="n">tnname</span><span class="o">+</span><span class="s2">&quot;_negative&quot;</span>
+
+                
+            <span class="n">temp_neg</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">tnname</span><span class="p">)</span>
+            <span class="n">temp_pos</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">tpname</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+        
+            <span class="n">tnname</span> <span class="o">=</span> <span class="n">tnname</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;0Xff_&quot;</span><span class="p">,</span><span class="s2">&quot;0Mff_&quot;</span><span class="p">)</span>
+            <span class="n">tpname</span> <span class="o">=</span> <span class="n">tpname</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;0Xff_&quot;</span><span class="p">,</span><span class="s2">&quot;0Mff_&quot;</span><span class="p">)</span>   
+            
+            <span class="n">temp_neg</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">tnname</span><span class="p">)</span>
+            <span class="n">temp_pos</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">tpname</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;data&quot;</span> <span class="ow">in</span>  <span class="n">tnname</span> <span class="ow">or</span> <span class="s2">&quot;Data&quot;</span> <span class="ow">in</span> <span class="n">tnname</span> <span class="p">:</span> 
+            
+            <span class="n">temp_neg</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="s2">&quot;data_obs&quot;</span><span class="p">)</span>
+            <span class="n">temp_pos</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="s2">&quot;data_obs&quot;</span><span class="p">)</span>
+        
+        
+        
+        <span class="k">if</span> <span class="n">temp_pos</span><span class="o">.</span><span class="n">Integral</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">temp_pos</span><span class="o">.</span><span class="n">Write</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">temp_neg</span><span class="o">.</span><span class="n">Integral</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">temp_neg</span><span class="o">.</span><span class="n">Write</span><span class="p">()</span>
+            
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dumped Histogram into &#39;</span><span class="o">+</span><span class="n">directory</span> <span class="o">+</span> <span class="n">fname</span><span class="o">+</span><span class="s1">&#39;_unrolled.root&#39;</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

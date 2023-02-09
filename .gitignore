@@ -2,6 +2,6 @@
 *.txt
 *.csv
 __pycache__/*
-build/*
+build/doctrees
 source/*
 Makefile
