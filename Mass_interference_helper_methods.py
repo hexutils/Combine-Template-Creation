@@ -10,18 +10,18 @@ def plot_overall_interference(terms, names,
 
     Parameters
     ----------
-    terms : iterable
+    terms : list[tuple[Union[float, int]]]
         A list of all the pure sample and interference terms. This should be a list of (count, bin) pairs (i.e. numpy histograms)
-    names : iterable
+    names : list[str]
         A list of the names for all of these terms
-    output_directory : string
+    output_directory : str
         The directory you would like to output to
-    output_filename : string
+    output_filename : str
         The filename you want to name the plots
 
     Returns
     -------
-    Tuple[numpy.array, numpy.array]
+    tuple[numpy.ndarray, numpy.ndarray]
         the numpy histogram object of the overall sample
     """
     

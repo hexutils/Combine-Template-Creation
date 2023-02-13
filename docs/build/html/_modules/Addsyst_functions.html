@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Addsyst_functions &mdash; Combine-Template-Creation  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Combine-Template-Creation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+    <a href="index.html">Home Page</a>
+    <a href="genindex.html">Index</a>
+    <a href="py-modindex.html">Module Index</a>
+    <a href="https://github.com/hexutils/Combine-Template-Creation">Github Page</a>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Combine-Template-Creation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">Addsyst_functions</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for Addsyst_functions</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="addhzzbr"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.addhzzbr">[docs]</a><span></span><span class="k">def</span> <span class="nf">addhzzbr</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;hzz_br lnN&quot;</span>
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;back&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pr</span> <span class="p">:</span> 
+            <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.02&quot;</span>
+        <span class="k">else</span> <span class="p">:</span>
+             <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; -&quot;</span>
+    
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>    </div>
+    
+
+
+<div class="viewcode-block" id="addlumi"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.addlumi">[docs]</a><span class="k">def</span> <span class="nf">addlumi</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;_summary_</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lines : list</span>
+<span class="sd">        _description_</span>
+<span class="sd">    processes : iterable</span>
+<span class="sd">        _description_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;lumi_13TeV lnN&quot;</span>
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.016/0.984&quot;</span> 
+    <span class="c1">#line = line + &quot; \n&quot;</span>
+    <span class="c1">#taken from https://twiki.cern.ch/twiki/bin/view/CMS/TWikiLUM#SummaryTable</span>
+    <span class="c1">#inclusive lumi</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>    </div>
+
+
+
+<div class="viewcode-block" id="addlumi16"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.addlumi16">[docs]</a><span class="k">def</span> <span class="nf">addlumi16</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;lumi_13TeV_2016 lnN&quot;</span>
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0082/0.9918&quot;</span> 
+    <span class="c1">#line = line + &quot; \n&quot;</span>
+    <span class="c1">#taken from https://twiki.cern.ch/twiki/bin/view/CMS/TWikiLUM#SummaryTable</span>
+    <span class="c1">#inclusive lumi</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>    </div>
+
+<div class="viewcode-block" id="addlumi17"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.addlumi17">[docs]</a><span class="k">def</span> <span class="nf">addlumi17</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;lumi_13TeV_2017 lnN&quot;</span>
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0088/0.9912&quot;</span> 
+    <span class="c1">#line = line + &quot; \n&quot;</span>
+    <span class="c1">#taken from https://twiki.cern.ch/twiki/bin/view/CMS/TWikiLUM#SummaryTable</span>
+    <span class="c1">#inclusive lumi</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>    </div>
+
+<div class="viewcode-block" id="addlumi18"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.addlumi18">[docs]</a><span class="k">def</span> <span class="nf">addlumi18</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;lumi_13TeV_2018 lnN&quot;</span>
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0106/0.9894&quot;</span> 
+    <span class="c1">#line = line + &quot; \n&quot;</span>
+    <span class="c1">#taken from https://twiki.cern.ch/twiki/bin/view/CMS/TWikiLUM#SummaryTable</span>
+    <span class="c1">#inclusive lumi</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>    </div>
+
+
+
+    
+<div class="viewcode-block" id="addQCDscale_muR_ggH"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.addQCDscale_muR_ggH">[docs]</a><span class="k">def</span> <span class="nf">addQCDscale_muR_ggH</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;QCDscale_muF_qqH lnN&quot;</span>
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;ggH&quot;</span> <span class="ow">in</span> <span class="n">pr</span> <span class="p">:</span> 
+            <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.07110716651/0.906525580474&quot;</span>
+        <span class="k">else</span> <span class="p">:</span>
+             <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; -&quot;</span>
+    <span class="c1">#line = line + &quot; \n&quot;    </span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+
+
+    
+<div class="viewcode-block" id="addQCDscale_muR_qqH"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.addQCDscale_muR_qqH">[docs]</a><span class="k">def</span> <span class="nf">addQCDscale_muR_qqH</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;QCDscale_muR_qqH lnN&quot;</span>
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;qqH&quot;</span> <span class="ow">in</span> <span class="n">pr</span> <span class="p">:</span> 
+            <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 0.990706673021/1.00745328795&quot;</span>
+        <span class="k">else</span> <span class="p">:</span>
+             <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; -&quot;</span>
+    <span class="c1">#line = line + &quot; \n&quot;    </span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="addQCDscale_muF_ggH"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.addQCDscale_muF_ggH">[docs]</a><span class="k">def</span> <span class="nf">addQCDscale_muF_ggH</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;QCDscale_muF_ggH lnN&quot;</span>
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;ggH&quot;</span> <span class="ow">in</span> <span class="n">pr</span> <span class="p">:</span> 
+            <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 0.980003776978/1.01624735028&quot;</span>
+        <span class="k">else</span> <span class="p">:</span>
+             <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; -&quot;</span>
+    <span class="c1">#line = line + &quot; \n&quot;    </span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+
+
+    
+<div class="viewcode-block" id="addQCDscale_muF_qqH"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.addQCDscale_muF_qqH">[docs]</a><span class="k">def</span> <span class="nf">addQCDscale_muF_qqH</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;QCDscale_muF_qqH lnN&quot;</span>
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;qqH&quot;</span> <span class="ow">in</span> <span class="n">pr</span> <span class="p">:</span> 
+            <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.003290476/1.00409718125&quot;</span>
+        <span class="k">else</span> <span class="p">:</span>
+             <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; -&quot;</span>
+    <span class="c1">#line = line + &quot; \n&quot;    </span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="addCMS_EFF_mu"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.addCMS_EFF_mu">[docs]</a><span class="k">def</span> <span class="nf">addCMS_EFF_mu</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;CMS_eff_mu lnN&quot;</span>
+    
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;back_qqZZ&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pr</span><span class="p">:</span>  
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0191/0.9799&quot;</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; -&quot;</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+        
+<div class="viewcode-block" id="addCMS_EFF_e"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.addCMS_EFF_e">[docs]</a><span class="k">def</span> <span class="nf">addCMS_EFF_e</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;CMS_eff_e lnN&quot;</span>
+    
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;back_qqZZ&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pr</span><span class="p">:</span>  
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0584/0.9383&quot;</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; -&quot;</span>    
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+        
+
+
+<div class="viewcode-block" id="addEWcorr_qqZZ"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.addEWcorr_qqZZ">[docs]</a><span class="k">def</span> <span class="nf">addEWcorr_qqZZ</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;EWcorr_qqZZ lnN&quot;</span>
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;back_qqZZ&quot;</span> <span class="ow">in</span> <span class="n">pr</span> <span class="p">:</span> 
+            <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 0.99900110477/1.0009987799&quot;</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; -&quot;</span>
+    <span class="c1">#line = line + &quot; \n&quot;    </span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="addkf_ggZZ_background"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.addkf_ggZZ_background">[docs]</a><span class="k">def</span> <span class="nf">addkf_ggZZ_background</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;kf_ggZZ_back lnN&quot;</span>
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;back_ggZZ&quot;</span> <span class="ow">in</span> <span class="n">pr</span> <span class="p">:</span> 
+            <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.1/0.9&quot;</span>
+        <span class="k">elif</span>  <span class="s2">&quot;offggH_g11g21&quot;</span> <span class="ow">in</span> <span class="n">pr</span><span class="p">:</span>
+
+            <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.032/0.968&quot;</span>
+        <span class="k">else</span><span class="p">:</span>     
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; -&quot;</span>
+    <span class="c1">#line = line + &quot; \n&quot;    </span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="add_pythiatune"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.add_pythiatune">[docs]</a><span class="k">def</span> <span class="nf">add_pythiatune</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">,</span><span class="n">category</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;CMS_pythia_tune lnN&quot;</span>
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;offggH&quot;</span> <span class="ow">in</span> <span class="n">pr</span><span class="p">:</span> 
+            <span class="k">if</span> <span class="s2">&quot;Untagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 0.9985/1.0032&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;VHtagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0075/0.9973&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;VBFtagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0105/0.9967&quot;</span>
+        <span class="k">elif</span> <span class="s2">&quot;offqqH_0PM&quot;</span> <span class="ow">in</span> <span class="n">pr</span> <span class="p">:</span> 
+            <span class="k">if</span> <span class="s2">&quot;Untagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 0.9990/1.0004&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;VHtagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 0.9875/1.0151&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;VBFtagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0021/0.9988&quot;</span>
+        <span class="k">else</span><span class="p">:</span>     
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; -&quot;</span>
+
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="add_pythiascale"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.add_pythiascale">[docs]</a><span class="k">def</span> <span class="nf">add_pythiascale</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">,</span><span class="n">category</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;CMS_pythia_scale ?&quot;</span>
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+
+
+        <span class="k">if</span> <span class="s2">&quot;back_qqZZ&quot;</span> <span class="ow">in</span> <span class="n">pr</span><span class="p">:</span> 
+            <span class="c1">#Derived here : </span>
+            <span class="c1">#/afs/cern.ch/work/s/skyriaco/Offshell_trees/TreeEditor/TempMaker_aug15/background/PythiaScaleTest/plots</span>
+
+            <span class="k">if</span> <span class="s2">&quot;Untagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 0.9985/1.0007&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;VHtagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0405/0.9936&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;VBFtagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0258/0.9603&quot;</span>
+        <span class="k">elif</span> <span class="s2">&quot;offqqH_0PM&quot;</span> <span class="ow">in</span> <span class="n">pr</span> <span class="p">:</span>
+            <span class="c1">#all vbf uncert derived here: </span>
+            <span class="c1">#/afs/cern.ch/work/s/skyriaco/Offshell_trees/TreeEditor/TempMaker_aug15/VBF_filebased/PythiaScale/plots</span>
+
+            <span class="k">if</span> <span class="s2">&quot;Untagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 0.9914/1.0388&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;VHtagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0020/0.9489&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;VBFtagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.011/0.9543&quot;</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;offqqH&quot;</span> <span class="ow">in</span> <span class="n">pr</span> <span class="ow">and</span> <span class="s2">&quot;offqqH_0PM&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pr</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;Untagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 0.9921/1.0306&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;VHtagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0103/0.9645&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;VBFtagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0082/0.9680&quot;</span>
+        <span class="k">elif</span> <span class="s2">&quot;back_VVZZ&quot;</span> <span class="ow">in</span> <span class="n">pr</span> <span class="p">:</span> 
+            <span class="k">if</span> <span class="s2">&quot;Untagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 0.9987/1.0046&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;VHtagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0057/0.9180&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;VBFtagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 0.9910/1.00005&quot;</span>
+        <span class="k">elif</span> <span class="s2">&quot;offggH&quot;</span> <span class="ow">in</span> <span class="n">pr</span><span class="p">:</span>
+            <span class="c1">#derived using high mass samples here: </span>
+            <span class="c1">#/afs/cern.ch/work/s/skyriaco/Offshell_trees/TreeEditor/testCat/cat_jul20/PythiaScale/ggF/MC18/plots</span>
+            <span class="k">if</span> <span class="s2">&quot;Untagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0075/0.9934&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;VHtagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 0.90276/1.0945&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;VBFtagged&quot;</span> <span class="ow">in</span> <span class="n">category</span> <span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 0.8755/1.1328&quot;</span>
+
+
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+
+
+
+
+
+
+
+
+<div class="viewcode-block" id="addkfew_as"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.addkfew_as">[docs]</a><span class="k">def</span> <span class="nf">addkfew_as</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;kfas_ew lnN&quot;</span>
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;offqqH&quot;</span> <span class="ow">in</span> <span class="n">pr</span><span class="p">:</span> 
+            <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0065/0.993500&quot;</span>
+        <span class="k">else</span><span class="p">:</span>     
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; -&quot;</span>
+
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+    
+
+<div class="viewcode-block" id="addkfew_pdf"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.addkfew_pdf">[docs]</a><span class="k">def</span> <span class="nf">addkfew_pdf</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;kfpdf_ew lnN&quot;</span>
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;offqqH&quot;</span> <span class="ow">in</span> <span class="n">pr</span><span class="p">:</span> 
+            <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0189/0.9811&quot;</span>
+        <span class="k">else</span><span class="p">:</span>     
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; -&quot;</span>
+
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="addkfew_qcdscale"><a class="viewcode-back" href="../Addsyst_functions.html#Addsyst_functions.addkfew_qcdscale">[docs]</a><span class="k">def</span> <span class="nf">addkfew_qcdscale</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">processes</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;kfqcd_ew lnN&quot;</span>
+    <span class="k">for</span> <span class="n">pr</span> <span class="ow">in</span> <span class="n">processes</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;offqqH&quot;</span> <span class="ow">in</span> <span class="n">pr</span><span class="p">:</span> 
+            <span class="n">line</span> <span class="o">=</span>  <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; 1.0133/0.992&quot;</span>
+        <span class="k">else</span><span class="p">:</span>      
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; -&quot;</span>
+
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+
+
+
+    
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

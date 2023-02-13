@@ -10,14 +10,14 @@ def scale(counts, scaleto):
 
     Parameters
     ----------
-    counts : array_like
+    counts : list[Union[int, float]]
         A list of bin counts
     scaleto : float
         The absolute area to scale to
 
     Returns
     -------
-    numpy.array
+    numpy.ndarray
         The scaled histogram counts
     """
     counts = np.array(counts)
@@ -50,9 +50,9 @@ def Unroll_2D_OnShell(directory, fname):
 
     Parameters
     ----------
-    directory : string
+    directory : str
         The directory that you are inputting and outputting from
-    fname : string
+    fname : str
         The filename of what you are unrolling
     """
     if directory[-1] != '/':

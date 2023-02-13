@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Template_creator module &mdash; Combine-Template-Creation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Combine-Template-Creation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Template_creator module</a></li>
+</ul>
+</div>
+    <a href="index.html">Home Page</a>
+    <a href="genindex.html">Index</a>
+    <a href="py-modindex.html">Module Index</a>
+    <a href="https://github.com/hexutils/Combine-Template-Creation">Github Page</a>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Combine-Template-Creation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Template_creator module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Template_creator.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-Template_creator">
+<span id="template-creator-module"></span><h1>Template_creator module<a class="headerlink" href="#module-Template_creator" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="Template_creator.Interf_Coupling_template_creator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Template_creator.</span></span><span class="sig-name descname"><span class="pre">Interf_Coupling_template_creator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkgs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkgNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkg_areas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerlim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upperlim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pure1_weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pure2_weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interf_weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_of_generation_hypothesis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass_iterable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interf_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pure1_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pure2_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkg_pure1_weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkg_pure2_weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkg_interf_weights</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Template_creator.html#Interf_Coupling_template_creator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Template_creator.Interf_Coupling_template_creator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#Template_creator.Template_Creator_2D" title="Template_creator.Template_Creator_2D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Template_Creator_2D</span></code></a></p>
+<p>CURRENTLY A WORK IN PROGRESS. Designed to be a 2d template between different hypotheses</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_directory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The directory you would like to output all your data in</p></li>
+<li><p><strong>fname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The filenames contained in all your outputs</p></li>
+<li><p><strong>bkgs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em><em>]</em>) – A list of background iterables. These can be lists of mass distriutions, lists of angle distributions, etc. bkgs is essentially a list of lists.</p></li>
+<li><p><strong>bkgNames</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>]</em>) – A list of names for each background. This should be the same dimension as bkgs.</p></li>
+<li><p><strong>bkg_areas</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em><em>]</em>) – A list of areas for each background that you would like to scale to</p></li>
+<li><p><strong>lowerlim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The lower limit of your attribute’s range (i.e. if it was phi, lowerlim would be -pi)</p></li>
+<li><p><strong>upperlim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The upper limit of your attribute’s range (i.e. if it was phi, upperlim would be pi)</p></li>
+<li><p><strong>pure1_weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – The weights for the first pure sample. Should be an iterable!</p></li>
+<li><p><strong>pure2_weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – The weights for the second pure sample. Should be an iterable!</p></li>
+<li><p><strong>interf_weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – The weights for the sample of the interference between the 2. Should be an iterable!</p></li>
+<li><p><strong>weight_of_generation_hypothesis</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The weight for what the sample was generated at. This is used to normalize weights.</p></li>
+<li><p><strong>mass_iterable</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – This is the mass iterable that you are using for one axis of the template</p></li>
+<li><p><strong>interf_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The name of your interference sample</p></li>
+<li><p><strong>pure1_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The name of your first pure sample</p></li>
+<li><p><strong>pure2_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The name of your second pure sample</p></li>
+<li><p><strong>bkg_pure1_weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – The weights of your background to your first pure sample’s hypothesis</p></li>
+<li><p><strong>bkg_pure2_weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – The weights of your background to your second pure sample’s hypothesis</p></li>
+<li><p><strong>bkg_interf_weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – The weights of your background to your interference sample’s hypothesis</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="Template_creator.Interf_Reso_template_creator_1D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Template_creator.</span></span><span class="sig-name descname"><span class="pre">Interf_Reso_template_creator_1D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkgs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkgNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkg_areas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerlim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upperlim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BW1_0_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BW2_0_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BW3_0_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BW12_0_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BW12_05_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BW13_0_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BW13_0_05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BW23_0_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BW23_0_05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CS_BW1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CS_BW2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CS_BW3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CS_BW12_0_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CS_BW12_05_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CS_BW13_0_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CS_BW13_0_05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CS_BW23_0_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CS_BW23_0_05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Template_creator.html#Interf_Reso_template_creator_1D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Template_creator.Interf_Reso_template_creator_1D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#Template_creator.Template_Creator_1D" title="Template_creator.Template_Creator_1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Template_Creator_1D</span></code></a></p>
+<p>Initializes the 1D template for mass interference</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_directory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The directory you would like to output all your data in</p></li>
+<li><p><strong>fname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The filenames contained in all your outputs</p></li>
+<li><p><strong>bkgs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em><em>]</em>) – A list of background iterables. These can be lists of mass distriutions, lists of angle distributions, etc. bkgs is essentially a list of lists.</p></li>
+<li><p><strong>bkgNames</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>]</em>) – A list of names for each background. This should be the same dimension as bkgs.</p></li>
+<li><p><strong>bkg_areas</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em><em>]</em>) – A list of areas for each background that you would like to scale to</p></li>
+<li><p><strong>lowerlim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The lower limit of your attribute’s range (i.e. if it was phi, lowerlim would be -pi)</p></li>
+<li><p><strong>upperlim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The upper limit of your attribute’s range (i.e. if it was phi, upperlim would be pi)</p></li>
+<li><p><strong>BW1_0_0</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – The first pure sample. An iterable of masses.</p></li>
+<li><p><strong>BW2_0_0</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – The second pure sample. An iterable of masses.</p></li>
+<li><p><strong>BW3_0_0</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – The third pure sample. An iterable of masses.</p></li>
+<li><p><strong>BW12_0_0</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – The interference sample with 0 phase between 1 &amp; 2. An iterable of masses.</p></li>
+<li><p><strong>BW12_05_0</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – The interference sample with pi/2 phase between 1 &amp; 2 (hence the “05” indicating 0.5pi). An iterable of masses.</p></li>
+<li><p><strong>BW13_0_0</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – The interference sample with 0 phase between 1 &amp; 3. An iterable of masses.</p></li>
+<li><p><strong>BW13_0_05</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – The interference sample with pi/2 phase between 1 &amp; 3. An iterable of masses.</p></li>
+<li><p><strong>BW23_0_0</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – The interference sample with 0 phase between 2 &amp; 3. An iterable of masses.</p></li>
+<li><p><strong>BW23_0_05</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – The interference sample with pi/2 phase between 2 &amp; 3. An iterable of masses.</p></li>
+<li><p><strong>CS_BW1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The cross section of the first pure sample</p></li>
+<li><p><strong>CS_BW2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The cross section of the second pure sample</p></li>
+<li><p><strong>CS_BW3</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The cross section of the third pure sample</p></li>
+<li><p><strong>CS_BW12_0_0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The cross section of the variable’s name</p></li>
+<li><p><strong>CS_BW12_05_0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The cross section of the variable’s name</p></li>
+<li><p><strong>CS_BW13_0_0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The cross section of the variable’s name</p></li>
+<li><p><strong>CS_BW13_0_05</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The cross section of the variable’s name</p></li>
+<li><p><strong>CS_BW23_0_0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The cross section of the variable’s name</p></li>
+<li><p><strong>CS_BW23_0_05</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The cross section of the variable’s name</p></li>
+<li><p><strong>nbins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – The cross section of the variable’s name</p></li>
+<li><p><strong>area1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The cross section of the variable’s name</p></li>
+<li><p><strong>area2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The cross section of the variable’s name</p></li>
+<li><p><strong>area3</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The cross section of the variable’s name</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="Template_creator.Interf_Reso_template_creator_1D.plot_overall_interference">
+<span class="sig-name descname"><span class="pre">plot_overall_interference</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Template_creator.html#Interf_Reso_template_creator_1D.plot_overall_interference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Template_creator.Interf_Reso_template_creator_1D.plot_overall_interference" title="Permalink to this definition"></a></dt>
+<dd><p>This plots all the different combinations of the three phases</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="Template_creator.Significance_Hypothesis_template_creator_1D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Template_creator.</span></span><span class="sig-name descname"><span class="pre">Significance_Hypothesis_template_creator_1D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkgs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkgNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkg_areas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerlim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upperlim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal1_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal2_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_area</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbins</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Template_creator.html#Significance_Hypothesis_template_creator_1D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Template_creator.Significance_Hypothesis_template_creator_1D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#Template_creator.Template_Creator_1D" title="Template_creator.Template_Creator_1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Template_Creator_1D</span></code></a></p>
+<p>This initialization takes in all the same inputs as the parent class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_directory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The directory you would like to output all your data in</p></li>
+<li><p><strong>fname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The filenames contained in all your outputs</p></li>
+<li><p><strong>bkgs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em><em>]</em>) – A list of background iterables. These can be lists of mass distriutions, lists of angle distributions, etc. bkgs is essentially a list of lists.</p></li>
+<li><p><strong>bkgNames</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>]</em>) – A list of names for each background. This should be the same dimension as bkgs.</p></li>
+<li><p><strong>bkg_areas</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em><em>]</em>) – A list of areas for each background that you would like to scale to</p></li>
+<li><p><strong>lowerlim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The lower limit of your attribute’s range (i.e. if it was phi, lowerlim would be -pi)</p></li>
+<li><p><strong>upperlim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The upper limit of your attribute’s range (i.e. if it was phi, upperlim would be pi)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="Template_creator.Template_Creator_1D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Template_creator.</span></span><span class="sig-name descname"><span class="pre">Template_Creator_1D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkgs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkgNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkg_areas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerlim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upperlim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Template_creator.html#Template_Creator_1D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Template_creator.Template_Creator_1D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#Template_creator.Template_creator" title="Template_creator.Template_creator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Template_creator</span></code></a></p>
+<p>This initialization takes in all the same inputs as the parent class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_directory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The directory you would like to output all your data in</p></li>
+<li><p><strong>fname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The filenames contained in all your outputs</p></li>
+<li><p><strong>bkgs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em><em>]</em>) – A list of background iterables. These can be lists of mass distriutions, lists of angle distributions, etc. bkgs is essentially a list of lists.</p></li>
+<li><p><strong>bkgNames</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>]</em>) – A list of names for each background. This should be the same dimension as bkgs.</p></li>
+<li><p><strong>bkg_areas</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em><em>]</em>) – A list of areas for each background that you would like to scale to</p></li>
+<li><p><strong>lowerlim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The lower limit of your attribute’s range (i.e. if it was phi, lowerlim would be -pi)</p></li>
+<li><p><strong>upperlim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The upper limit of your attribute’s range (i.e. if it was phi, upperlim would be pi)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="Template_creator.Template_Creator_1D.scale_and_add_bkgs">
+<span class="sig-name descname"><span class="pre">scale_and_add_bkgs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaleTo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Template_creator.html#Template_Creator_1D.scale_and_add_bkgs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Template_creator.Template_Creator_1D.scale_and_add_bkgs" title="Permalink to this definition"></a></dt>
+<dd><p>This is the 1-dimensional version of the function.
+It serves to bin and scale the backgrounds given to their respective areas, then add them into one histogram.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – Either the number of bins you want, or a list of the bins you want, by default 40</p></li>
+<li><p><strong>scaleTo</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – If true, this function will scale the backgrounds before adding them, by default True</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an overall histogram pair of (counts, bins) a la a numpy histogram</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)">numpy.ndarray</a>, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)">numpy.ndarray</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="Template_creator.Template_Creator_2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Template_creator.</span></span><span class="sig-name descname"><span class="pre">Template_Creator_2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkgs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkgNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkg_areas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerlim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upperlim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Template_creator.html#Template_Creator_2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Template_creator.Template_Creator_2D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#Template_creator.Template_creator" title="Template_creator.Template_creator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Template_creator</span></code></a></p>
+<p>This initialization takes in all the same inputs as the parent class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_directory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The directory you would like to output all your data in</p></li>
+<li><p><strong>fname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The filenames contained in all your outputs</p></li>
+<li><p><strong>bkgs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em><em>]</em>) – A list of background iterables. These can be lists of mass distriutions, lists of angle distributions, etc. bkgs is essentially a list of lists.</p></li>
+<li><p><strong>bkgNames</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>]</em>) – A list of names for each background. This should be the same dimension as bkgs.</p></li>
+<li><p><strong>bkg_areas</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em><em>]</em>) – A list of areas for each background that you would like to scale to</p></li>
+<li><p><strong>lowerlim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The lower limit of your attribute’s range (i.e. if it was phi, lowerlim would be -pi)</p></li>
+<li><p><strong>upperlim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The upper limit of your attribute’s range (i.e. if it was phi, upperlim would be pi)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="Template_creator.Template_Creator_2D.scale_and_add_bkgs">
+<span class="sig-name descname"><span class="pre">scale_and_add_bkgs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaleTo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Template_creator.html#Template_Creator_2D.scale_and_add_bkgs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Template_creator.Template_Creator_2D.scale_and_add_bkgs" title="Permalink to this definition"></a></dt>
+<dd><p>This is the 2-dimensional version of the function.
+It serves to bin and scale the backgrounds given to their respective areas, then add them into one histogram.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bins</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>array_like</em><em>]</em><em>, </em><em>optional</em>) – Either the number of bins you want, or a list of the bins you want, by default 40</p></li>
+<li><p><strong>scaleTo</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – If true, this function will scale the backgrounds before adding them, by default True</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an overall histogram pair of (counts, binsx, binsy) a la a numpy histogram</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)">numpy.ndarray</a>, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)">numpy.ndarray</a>, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)">numpy.ndarray</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="Template_creator.Template_creator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Template_creator.</span></span><span class="sig-name descname"><span class="pre">Template_creator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkgs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkgNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkg_areas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerlim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upperlim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Template_creator.html#Template_creator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Template_creator.Template_creator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>This serves as a parent class for all other templates made</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_directory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The directory you would like to output all your data in</p></li>
+<li><p><strong>fname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The filenames contained in all your outputs</p></li>
+<li><p><strong>bkgs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em><em>]</em>) – A list of background iterables. These can be lists of mass distriutions, lists of angle distributions, etc. bkgs is essentially a list of lists.</p></li>
+<li><p><strong>bkgNames</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>]</em>) – A list of names for each background. This should be the same dimension as bkgs.</p></li>
+<li><p><strong>bkg_areas</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>[</em><em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em><em>]</em>) – A list of areas for each background that you would like to scale to</p></li>
+<li><p><strong>lowerlim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The lower limit of your attribute’s range (i.e. if it was phi, lowerlim would be -pi)</p></li>
+<li><p><strong>upperlim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The upper limit of your attribute’s range (i.e. if it was phi, upperlim would be pi)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="Template_creator.Template_creator.create_datacards">
+<span class="sig-name descname"><span class="pre">create_datacards</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Template_creator.html#Template_creator.create_datacards"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Template_creator.Template_creator.create_datacards" title="Permalink to this definition"></a></dt>
+<dd><p>This function uses DatacardMaker_OnShell and MakeInputRoot_OnShell to generate the datacards and input for Higgs Combine</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether you would like verbosity, by default False</p></li>
+<li><p><strong>clean</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether you would like to wipe your output folders before putting anything else in them, by default True</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Template_creator.Template_creator.scale_and_add_bkgs">
+<span class="sig-name descname"><span class="pre">scale_and_add_bkgs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Template_creator.html#Template_creator.scale_and_add_bkgs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Template_creator.Template_creator.scale_and_add_bkgs" title="Permalink to this definition"></a></dt>
+<dd><p>This is a placeholder for the same function in the 1D and 2D template cases</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Template_creator.Template_creator.stackPlot">
+<span class="sig-name descname"><span class="pre">stackPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nbins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Template_creator.html#Template_creator.stackPlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Template_creator.Template_creator.stackPlot" title="Permalink to this definition"></a></dt>
+<dd><p>Generates a stack plot of your samples</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>nbins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – The number of plots you want, by default 40</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

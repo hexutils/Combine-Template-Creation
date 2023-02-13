@@ -1,4 +1,5 @@
 import Mass_interference_helper_methods as mihm
+from collections.abc import Iterable
 import matplotlib.pyplot as plt
 import Template_helper_methods
 import mplhep as hep
@@ -21,15 +22,15 @@ class Template_creator(object):
 
         Parameters
         ----------
-        output_directory : string
+        output_directory : str
             The directory you would like to output all your data in
-        fname : string
+        fname : str
             The filenames contained in all your outputs
-        bkgs : array_like
+        bkgs : list[list[float]]
             A list of background iterables. These can be lists of mass distriutions, lists of angle distributions, etc. bkgs is essentially a list of lists.
-        bkgNames : array_like
+        bkgNames : list[str]
             A list of names for each background. This should be the same dimension as bkgs.
-        bkg_areas : array_like
+        bkg_areas : list[Union[float, int]]
             A list of areas for each background that you would like to scale to
         lowerlim : float
             The lower limit of your attribute's range (i.e. if it was phi, lowerlim would be -pi)
@@ -74,9 +75,12 @@ class Template_creator(object):
     def create_datacards(self, verbose=False, clean=True):
         """This function uses DatacardMaker_OnShell and MakeInputRoot_OnShell to generate the datacards and input for Higgs Combine
 
-        Keyword Arguments:
-            verbose -- Whether you would like verbosity (default: {False})
-            clean -- Whether you would like to wipe your output folders before putting anything else in them (default: {False})
+        Parameters
+        ----------
+        verbose : bool, optional
+            Whether you would like verbosity, by default False
+        clean : bool, optional
+            Whether you would like to wipe your output folders before putting anything else in them, by default True
         """
         filename = self.output_directory + self.fname + ".root"
         in_folder = self.output_directory + self.fname
@@ -118,8 +122,10 @@ class Template_creator(object):
     def stackPlot(self, nbins=40):
         """Generates a stack plot of your samples
 
-        Keyword Arguments:
-            nbins -- The number of plots you want (default: {40})
+        Parameters
+        ----------
+        nbins : int, optional
+            The number of plots you want, by default 40
         """
         bins = []
         weights = []
@@ -142,25 +148,20 @@ class Template_creator(object):
             plt.savefig(self.output_directory + sig_name + '_stack.png')
         
 class Template_Creator_1D(Template_creator):
-    """This is a class that is a parent for all 1-dimensional templates for Higgs Combine
-
-    Arguments:
-        Template_creator -- The parent class for all templates
-    """
     def __init__(self, output_directory, fname, bkgs, bkgNames, bkg_areas, lowerlim, upperlim):
         """This initialization takes in all the same inputs as the parent class.
 
         Parameters
         ----------
-        output_directory : string
+        output_directory : str
             The directory you would like to output all your data in
-        fname : string
+        fname : str
             The filenames contained in all your outputs
-        bkgs : array_like
+        bkgs : list[list[float]]
             A list of background iterables. These can be lists of mass distriutions, lists of angle distributions, etc. bkgs is essentially a list of lists.
-        bkgNames : array_like
+        bkgNames : list[str]
             A list of names for each background. This should be the same dimension as bkgs.
-        bkg_areas : array_like
+        bkg_areas : list[Union[float, int]]
             A list of areas for each background that you would like to scale to
         lowerlim : float
             The lower limit of your attribute's range (i.e. if it was phi, lowerlim would be -pi)
@@ -183,7 +184,7 @@ class Template_Creator_1D(Template_creator):
 
         Returns
         -------
-        Tuple[numpy.array, numpy.array]
+        Tuple[numpy.ndarray, numpy.ndarray]
             an overall histogram pair of (counts, bins) a la a numpy histogram
         """
         names_samples_and_areas = list(self.bkgs.items())
@@ -210,15 +211,15 @@ class Template_Creator_2D(Template_creator):
 
         Parameters
         ----------
-        output_directory : string
+        output_directory : str
             The directory you would like to output all your data in
-        fname : string
+        fname : str
             The filenames contained in all your outputs
-        bkgs : array_like
+        bkgs : list[list[float]]
             A list of background iterables. These can be lists of mass distriutions, lists of angle distributions, etc. bkgs is essentially a list of lists.
-        bkgNames : array_like
+        bkgNames : list[str]
             A list of names for each background. This should be the same dimension as bkgs.
-        bkg_areas : array_like
+        bkg_areas : list[Union[float, int]]
             A list of areas for each background that you would like to scale to
         lowerlim : float
             The lower limit of your attribute's range (i.e. if it was phi, lowerlim would be -pi)
@@ -229,15 +230,6 @@ class Template_Creator_2D(Template_creator):
         self.dimension = 2   
         
     def scale_and_add_bkgs(self, bins=40, scaleTo=True):
-        """
-
-        Keyword Arguments:
-            bins -- 
-            scaleTo --  (default: {True})
-
-        Returns:
-            
-        """
         """This is the 2-dimensional version of the function. 
         It serves to bin and scale the backgrounds given to their respective areas, then add them into one histogram.
 
@@ -250,7 +242,7 @@ class Template_Creator_2D(Template_creator):
 
         Returns
         -------
-        Tuple[numpy.array, numpy.array, numpy.array]
+        Tuple[numpy.ndarray, numpy.ndarray, numpy.ndarray]
             an overall histogram pair of (counts, binsx, binsy) a la a numpy histogram
         """
         overall = np.ndarray((2,2))
@@ -287,41 +279,41 @@ class Interf_Coupling_template_creator(Template_Creator_2D): #WIP
 
         Parameters
         ----------
-        output_directory : string
+        output_directory : str
             The directory you would like to output all your data in
-        fname : string
+        fname : str
             The filenames contained in all your outputs
-        bkgs : array_like
+        bkgs : list[list[float]]
             A list of background iterables. These can be lists of mass distriutions, lists of angle distributions, etc. bkgs is essentially a list of lists.
-        bkgNames : array_like
+        bkgNames : list[str]
             A list of names for each background. This should be the same dimension as bkgs.
-        bkg_areas : array_like
+        bkg_areas : list[Union[float, int]]
             A list of areas for each background that you would like to scale to
         lowerlim : float
             The lower limit of your attribute's range (i.e. if it was phi, lowerlim would be -pi)
         upperlim : float
             The upper limit of your attribute's range (i.e. if it was phi, upperlim would be pi)
-        pure1_weights : array_like
+        pure1_weights : list[float]
             The weights for the first pure sample. Should be an iterable!
-        pure2_weights : array_like
+        pure2_weights : list[float]
             The weights for the second pure sample. Should be an iterable!
-        interf_weights : array_like
+        interf_weights : list[float]
             The weights for the sample of the interference between the 2. Should be an iterable!
-        weight_of_generation_hypothesis : string
+        weight_of_generation_hypothesis : str
             The weight for what the sample was generated at. This is used to normalize weights.
-        mass_iterable : array_like
+        mass_iterable : list[float]
             This is the mass iterable that you are using for one axis of the template
-        interf_name : string
+        interf_name : str
             The name of your interference sample
-        pure1_name : string
+        pure1_name : str
             The name of your first pure sample
-        pure2_name : string
+        pure2_name : str
             The name of your second pure sample
-        bkg_pure1_weights : array_like
+        bkg_pure1_weights : list[float]
             The weights of your background to your first pure sample's hypothesis
-        bkg_pure2_weights : array_like
+        bkg_pure2_weights : list[float]
             The weights of your background to your second pure sample's hypothesis
-        bkg_interf_weights : array_like
+        bkg_interf_weights : list[float]
             The weights of your background to your interference sample's hypothesis
         """
         super().__init__(output_directory, fname, bkgs, bkgNames, bkg_areas, lowerlim, upperlim)
@@ -353,38 +345,38 @@ class Interf_Reso_template_creator_1D(Template_Creator_1D):
 
         Parameters
         ----------
-        output_directory : string
+        output_directory : str
             The directory you would like to output all your data in
-        fname : string
+        fname : str
             The filenames contained in all your outputs
-        bkgs : array_like
+        bkgs : list[list[float]]
             A list of background iterables. These can be lists of mass distriutions, lists of angle distributions, etc. bkgs is essentially a list of lists.
-        bkgNames : array_like
+        bkgNames : list[str]
             A list of names for each background. This should be the same dimension as bkgs.
-        bkg_areas : array_like
+        bkg_areas : list[Union[float, int]]
             A list of areas for each background that you would like to scale to
         lowerlim : float
             The lower limit of your attribute's range (i.e. if it was phi, lowerlim would be -pi)
         upperlim : float
             The upper limit of your attribute's range (i.e. if it was phi, upperlim would be pi)
-        BW1_0_0 : array_like
-            The first pure sample
-        BW2_0_0 : array_like
-            The second pure sample
-        BW3_0_0 : array_like
-            The third pure sample
-        BW12_0_0 : array_like
-            The interference sample with 0 phase between 1 & 2
-        BW12_05_0 : array_like
-            The interference sample with pi/2 phase between 1 & 2 (hence the "05" indicating 0.5pi)
-        BW13_0_0 : array_like
-            The interference sample with 0 phase between 1 & 3
-        BW13_0_05 : array_like
-            The interference sample with pi/2 phase between 1 & 3
-        BW23_0_0 : array_like
-            The interference sample with 0 phase between 2 & 3
-        BW23_0_05 : array_like
-            The interference sample with pi/2 phase between 2 & 3
+        BW1_0_0 : list[float]
+            The first pure sample. An iterable of masses.
+        BW2_0_0 : list[float]
+            The second pure sample. An iterable of masses.
+        BW3_0_0 : list[float]
+            The third pure sample. An iterable of masses.
+        BW12_0_0 : list[float]
+            The interference sample with 0 phase between 1 & 2. An iterable of masses.
+        BW12_05_0 : list[float]
+            The interference sample with pi/2 phase between 1 & 2 (hence the "05" indicating 0.5pi). An iterable of masses.
+        BW13_0_0 : list[float]
+            The interference sample with 0 phase between 1 & 3. An iterable of masses.
+        BW13_0_05 : list[float]
+            The interference sample with pi/2 phase between 1 & 3. An iterable of masses.
+        BW23_0_0 : list[float]
+            The interference sample with 0 phase between 2 & 3. An iterable of masses.
+        BW23_0_05 : list[float]
+            The interference sample with pi/2 phase between 2 & 3. An iterable of masses.
         CS_BW1 : float
             The cross section of the first pure sample
         CS_BW2 : float
