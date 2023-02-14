@@ -2,5 +2,11 @@
 *.txt
 *.csv
 __pycache__/*
+<<<<<<< HEAD
 *.png
 *.pdf
+=======
+*.pickle
+*.pdf
+*.png
+>>>>>>> 52504544b069020a1cb6ff0e08bb5b32f9546c99
