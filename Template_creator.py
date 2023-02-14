@@ -405,36 +405,36 @@ class Interf_Reso_template_creator_1D(Template_Creator_1D):
             The cross section of the variable's name
         """
         super().__init__(output_directory, fname, bkgs, bkgNames, bkg_areas, lowerlim, upperlim)
-        string_forms = ["BW1_0_0", "BW2_0_0", "BW3_0_0", 
-                        "BW12_0_0", "BW12_0.5_0", "BW13_0_0", "BW13_0_0.5", "BW23_0_0", "BW23_0_0.5"]
+        string_forms = ["BW1", "BW2", "BW3", 
+                        "BW1BW2_0_0", "BW1BW2_0.5_0", "BW1BW3_0_0", "BW1BW3_0_0.5", "BW2BW3_0_0", "BW2BW3_0_0.5"]
         #The 0.5 is for the physics model naming scheme
         
         with uproot.recreate(self.output_directory + self.fname + ".root") as f:
             
-            self.signals["BW1_0_0"] = (np.array(BW1_0_0), area1)
+            self.signals["BW1"] = (np.array(BW1_0_0), area1)
             
             BW1_0_0, bins = np.histogram(BW1_0_0, bins=nbins, range=(lowerlim, upperlim))            
             BW1_0_0 = Template_helper_methods.scale(BW1_0_0, CS_BW1)
             if np.any(BW1_0_0): #checks if the array is nonzero at any point
                 temp = Template_helper_methods.scale(BW1_0_0, area1)
-                f["ggH_0PM_BW1_0_0"] = (temp, bins)
-                self.scaled_signals["BW1_0_0"] = (temp, bins)
+                f["ggH_0PM_BW1"] = (temp, bins)
+                self.scaled_signals["BW1"] = (temp, bins)
             
             self.signals["BW2_0_0"] = (np.array(BW2_0_0), area2)
             BW2_0_0, _ = np.histogram(BW2_0_0, bins=bins, range=(lowerlim, upperlim))
             BW2_0_0 = Template_helper_methods.scale(BW2_0_0, CS_BW2)
             if np.any(BW2_0_0):
                 temp = Template_helper_methods.scale(BW2_0_0, area2)
-                f["ggH_0PM_BW2_0_0"] = (temp, bins)
-                self.scaled_signals["BW2_0_0"] = (temp, bins)
+                f["ggH_0PM_BW2"] = (temp, bins)
+                self.scaled_signals["BW2"] = (temp, bins)
             
-            self.signals["BW3_0_0"] = (np.array(BW3_0_0), area3)
+            self.signals["BW3"] = (np.array(BW3_0_0), area3)
             BW3_0_0, _ = np.histogram(BW3_0_0, bins=bins, range=(lowerlim, upperlim))
             BW3_0_0 = Template_helper_methods.scale(BW3_0_0, CS_BW3)
             if np.any(BW3_0_0):
                 temp = Template_helper_methods.scale(BW3_0_0, area3)
-                f["ggH_0PM_BW3_0_0"] = (temp, bins)
-                self.scaled_signals["BW3_0_0"] = (temp, bins)
+                f["ggH_0PM_BW3"] = (temp, bins)
+                self.scaled_signals["BW3"] = (temp, bins)
             
             interfList = [BW12_0_0, BW12_05_0, BW13_0_0, BW13_0_05, BW23_0_0, BW23_0_05] #list of all the interference terms
             interfCSList = [CS_BW12_0_0, CS_BW12_05_0, CS_BW13_0_0, CS_BW13_0_05, CS_BW23_0_0, CS_BW23_0_05]
@@ -469,9 +469,9 @@ class Interf_Reso_template_creator_1D(Template_Creator_1D):
                 neg = -1*np.minimum(interference_term.copy(),0)
                 
                 if np.any(pos):
-                    f["ggH_0PM_positive_" + string_forms[n+3]] = (pos, bins)
+                    f["ggH_0PM_" + string_forms[n+3] + "_positive"] = (pos, bins)
                 if np.any(neg):
-                    f["ggH_0PM_negative_" + string_forms[n+3]] = (neg, bins)
+                    f["ggH_0PM_" + string_forms[n+3] + "_negative"] = (neg, bins)
 
             f["bkg_ggzz"] = self.scale_and_add_bkgs(bins, scaleTo=True)
             
@@ -479,16 +479,16 @@ class Interf_Reso_template_creator_1D(Template_Creator_1D):
         """This plots all the different combinations of the three phases
         """
         # print(self.scaled_signals)
-        pures = ([key for key in self.scaled_signals.keys() if ("13" not in key and "12" not in key and "23" not in key)], 
-                 [value for key, value in self.scaled_signals.items() if ("13" not in key and "12" not in key and "23" not in key)])
-        for interf12 in tqdm.tqdm(["BW12_0_0", "BW12_0.5_0"], desc="Top Level of interference loop"):
-            for interf13 in tqdm.tqdm(["BW13_0_0", "BW13_0_0.5"], leave=False, desc="Second Level of interference loop"):
-                for interf23 in tqdm.tqdm(["BW23_0_0", "BW23_0_0.5"], leave=False, desc="Bottom Level of interference loop"):
+        pures = ([key for key in self.scaled_signals.keys() if ("1BW" not in key and "1BW" not in key and "2BW" not in key)], 
+                 [value for key, value in self.scaled_signals.items() if ("1BW" not in key and "1BW" not in key and "2BW" not in key)])
+        for interf12 in tqdm.tqdm(["BW1BW2_0_0", "BW1BW2_0.5_0"], desc="Top Level of interference loop"):
+            for interf13 in tqdm.tqdm(["BW1BW3_0_0", "BW1BW3_0_0.5"], leave=False, desc="Second Level of interference loop"):
+                for interf23 in tqdm.tqdm(["BW2BW3_0_0", "BW2BW3_0_0.5"], leave=False, desc="Bottom Level of interference loop"):
                     names, terms = copy.deepcopy(pures)
                     names += [interf12, interf13, interf23]
                     # print(names)
                     terms += [self.scaled_signals[interf12], self.scaled_signals[interf13], self.scaled_signals[interf23]]
-        
+
                     mihm.plot_overall_interference(terms, names, 
                                                    self.output_directory, interf12+"_"+interf13+"_"+interf23+"_"+self.fname)
 
