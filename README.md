@@ -64,5 +64,4 @@ classDiagram
   }
   class Significance_Hypothesis_template_creator_1D{
   }
-
 ```

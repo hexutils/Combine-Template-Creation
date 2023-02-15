@@ -11,6 +11,15 @@ def addhzzbr(lines,processes):
 
 
 def addlumi(lines,processes):
+    """_summary_
+
+    Parameters
+    ----------
+    lines : list
+        _description_
+    processes : iterable
+        _description_
+    """
     line = "lumi_13TeV lnN"
     for pr in processes :
         line =  line + " 1.016/0.984" 
